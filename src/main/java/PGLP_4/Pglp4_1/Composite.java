@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Composite implements InterfacePersonnels{
 
-private ArrayList <InterfacePersonnels> GroupePersonnels=new ArrayList<InterfacePersonnels>();
+public ArrayList <InterfacePersonnels> GroupePersonnels=new ArrayList<InterfacePersonnels>();
 private int IdGroupe;
 public void composite(int IdGroupe) {
 	this.IdGroupe=IdGroupe;
