@@ -1,38 +1,41 @@
 package PGLP_4.Pglp4_1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-public class Composite implements InterfacePersonnels{
-
-public ArrayList <InterfacePersonnels> GroupePersonnels=new ArrayList<InterfacePersonnels>();
-private int IdGroupe;
-public void composite(int IdGroupe) {
-	this.IdGroupe=IdGroupe;
-}
-
-
-public void print() {
-	System.out.println("L'dentifiant du groupe est: "+this.IdGroupe);
-	for (InterfacePersonnels Person: GroupePersonnels) {
-		Person.print();
-		
+public class Composite implements InterfacePersonnels {
+	
+	private int IDgrp;
+	public ArrayList<InterfacePersonnels> grpPerso=new ArrayList<InterfacePersonnels>();
+	
+	public ArrayList<InterfacePersonnels> gettab(){
+		return (ArrayList<InterfacePersonnels>) Collections.unmodifiableList(this.grpPerso);
 		
 	}
 	
-	
-}
-public void add(Personnels Person) {
-	this.GroupePersonnels.add(Person);
-	
-	
-}
+	public Composite(int IDgrp) {
+		this.IDgrp=IDgrp;
+	}
 
-public void remove(Personnels Person) {
-	this.GroupePersonnels.remove(Person);
+	public void print() {
+		// TODO Auto-generated method stub
+		System.out.println("le Id du groupe est : "+this.IDgrp);
+		for(InterfacePersonnels perso : grpPerso) {
+			perso.print();
+		}
+	}
 	
-}
-public void Afficher(String message) {
-	// TODO Auto-generated method stub
+	public void add(InterfacePersonnels perso) {
+		this.grpPerso.add(perso);
+	}
 	
-}
+	public void remove(Personnels perso) {
+		this.grpPerso.remove(perso);
+	}
+	
+	public String toString(){
+		  String str = "\t je suis un composite ID ==>> " + this.IDgrp;
+		  return str;
+	}
+
 }

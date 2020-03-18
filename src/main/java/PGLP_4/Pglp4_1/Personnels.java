@@ -2,121 +2,95 @@ package PGLP_4.Pglp4_1;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
-public final class Personnels implements InterfacePersonnels{
-private static final String Id = null;
-private String Nom;
-private String Prenom;
-String Fonction;
-
-LocalDate DateDeNaissance;
-ArrayList<Integer>NumeroTel=new ArrayList<Integer>();
-
-public class Builder{
-	/* parametre obligatoire*/
-	private String Nom;
-	private String Prenom;
-	/* parametre optionnel*/
+public class Personnels implements InterfacePersonnels {
+	/**
+	 * parametre obligatoire
+	 */
+	private final String nom;
+	private final String prenom;
+	private final int Id;//new
 	
-	LocalDate DateDeNaissance;
-	ArrayList<Integer>NumeroTel=new ArrayList<Integer>();
-public Builder(String Nom, String Prenom){
-	this.Nom=Nom;
-	this.Prenom=Prenom;
+	/**
+	 * parametre optionel
+	 */
+	private final LocalDate dateDeNaissance;
+	private final ArrayList<Integer> numTel;
 	
-}
-	public Builder DateDeNaissance(int annee, int mois, int jour) {
-		this.DateDeNaissance=LocalDate.of(annee, mois, jour);
-				return this;
-				
+	public static class Builder{
+		/**
+		 * parametre obligatoire
+		 */
+		private final String nom;
+		private final String prenom;
+		private final int Id;//new
+		/**
+		 * parametre optionel
+		 */
+		private LocalDate dateDeNaissance;
+		private ArrayList<Integer> numTel;
+		
+		public Builder(String nom, String prenom, int Id) {
+			this.nom=nom;
+			this.prenom=prenom;
+			this.Id=Id;
+			
+		}
+		
+		public Builder dateDeNaissance(int anne,int mois,int jour) {
+			this.dateDeNaissance= LocalDate.of(anne, mois, jour);
+			return this;
+			
+		}
+		
+		public Builder numTel(int numTel) {
+			this.numTel.add(numTel);
+			return this;
 	}
-	public Builder NumeroTel(int NumeroTel) {
-		this.NumeroTel.add(NumeroTel);
-		return this;
+
+		public Personnels build() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 	}
+	
 	public Personnels build() {
 		return new Personnels(this);
 		
 	}
-}
-
-
-
-
-
-
-
-
-
-public Personnels(Builder builder) {
-	// TODO Auto-generated constructor stub
 	
-	this.Nom=builder.Nom;
-	this.Prenom=builder.Prenom;
-	this.DateDeNaissance=builder.DateDeNaissance;
-	this.NumeroTel=builder.NumeroTel;
+	
+
+
+private Personnels(Personnels personnels) {
+	//Obligatoire
+	this.nom=personnels.nom;
+	this.prenom=personnels.prenom;
+	this.Id=personnels.Id;//new
+	//optionel
+	this.dateDeNaissance=personnels.dateDeNaissance;
+	this.numTel=personnels.numTel;
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public void Afficher(String message) {
-	// TODO Auto-generated method stub
-	
-}
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  * Affichage des informations du personnel
  */
-
 public void print() {
-    // TODO Auto-generated method stub
-    System.out.println("l'identifiant du personnel :"+this.Id+" "+this.Nom+" "+this.Prenom);
-}
+	// TODO Auto-generated method stub
+	System.out.println("l'identifiant du personnel :"+this.Id+" "+this.nom+" "+this.prenom);
 }
 
+
+
+public String toString(){
+	  String str = "\t je suis un Personnel ID ==>> " + this.Id;
+	  return str;
+}
+
+
+
+	}
