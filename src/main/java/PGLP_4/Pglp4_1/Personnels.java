@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public final class Personnels implements InterfacePersonnels{
+private static final String Id = null;
 private String Nom;
 private String Prenom;
 String Fonction;
@@ -109,8 +110,13 @@ public void Afficher(String message) {
 
 
 
+/**
+ * Affichage des informations du personnel
+ */
+
 public void print() {
-	// TODO Auto-generated method stub
-	
+    // TODO Auto-generated method stub
+    System.out.println("l'identifiant du personnel :"+this.Id+" "+this.Nom+" "+this.Prenom);
 }
 }
+
